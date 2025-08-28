@@ -1,0 +1,78 @@
+$wrapper: 1680px;
+$container: 1410px;
+
+$breakpoints: (
+		"t": 400px,
+		"sm": 470px,
+		"s": 576px,
+		"m": 768px,
+		"l": 992px,
+		"ml": 1110px,
+		"xl": 1290px,
+		"xxl": 1450px,
+		"max": 1920px,
+) !default;
+
+$breakpoints-max: (
+		"t": 399.98px,
+		"sm": 469.98px,
+		"s": 575.98px,
+		"m": 767.98px,
+		"l": 991.98px,
+		"ml": 1109.98px,
+		"xl": 1289.98px,
+		"max": 1919.98px,
+) !default;
+
+///Global
+$min-window-width: 340px;
+$basis-font-size: 16px;
+$default-line-height: 1.4;
+$default-font-size: 1rem;
+
+///Fonts
+$font-title: "Bitter", Georgia, "Times New Roman", serif;
+$font-text: "Inter", Arial, Helvetica, sans-serif;
+
+///Fonts weight
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semi: 600;
+$fw-bold: 700;
+
+///Borders
+$thin: 1px solid;
+$dashed: 1px dashed;
+$dotted: 1px dotted;
+
+///Text size
+$text-10: 0.625rem;
+$text-11: 0.7rem;
+$text-12: 0.75rem;
+$text-13: 0.8125rem;
+$text-14: 0.875rem;
+$text-15: 0.9375rem;
+$text-16: 1rem;
+$text-17: 1.0625rem;
+$text-18: 1.125rem;
+$text-19: 1.1875rem;
+$text-20: 1.25rem;
+$text-22: 1.375rem;
+$text-24: 1.5rem;
+$text-26: 1.625rem;
+$text-28: 1.75rem;
+$text-30: 1.875rem;
+$text-32: 2rem;
+$text-34: 2.125rem;
+$text-36: 2.25rem;
+$text-38: 2.375rem;
+$text-40: 2.5rem;
+$text-42: 2.625rem;
+$text-44: 2.75rem;
+$text-46: 2.875rem;
+$text-48: 3rem;
+$text-52: 3.25rem;
+$text-56: 3.5rem;
+$text-60: 3.75rem;
+$text-72: 4.5rem;

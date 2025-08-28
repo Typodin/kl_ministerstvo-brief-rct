@@ -1,0 +1,56 @@
+@use "../global" as *;
+
+$pageWidth: 1920px;
+$sidebarWidth: 330px;
+$contentWidth: 1590px;
+
+.wrapper {
+	@include breakpoint(ml) {
+		display: grid;
+		grid-template-columns: 330px calc(100% - 330px);
+		justify-content: center;
+		align-items: start;
+	}
+	@include breakpoint(max) {
+		grid-template-columns:
+			minmax(auto, 1fr)
+			minmax(auto, $sidebarWidth + $contentWidth);
+	}
+}
+
+@include breakpoint(max) {
+	.content {
+		display: grid;
+		grid-template-columns: minmax(auto, $contentWidth) 1fr;
+		&-row {
+			grid-column: 1 / -1;
+		}
+	}
+	.sidebar {
+		justify-content: end;
+		grid-template-columns: clamp($sidebarWidth, ($sidebarWidth / $pageWidth) * 100%, 1fr);
+	}
+	.container {
+		max-width: $contentWidth;
+	}
+	.alignment {
+		margin-inline: 90px;
+	}
+}
+
+.alignment {
+	padding: 0 10px;
+	@include breakpoint(s) {
+		padding: 0 15px;
+	}
+	@include breakpoint(m) {
+		padding: 0 30px;
+	}
+	@include breakpoint(xxl) {
+		padding: 0 50px;
+	}
+}
+
+.container {
+	width: 100%;
+}

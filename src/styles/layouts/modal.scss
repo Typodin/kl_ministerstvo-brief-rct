@@ -1,0 +1,144 @@
+@use "../global" as *;
+
+.video-modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #000;
+	padding: 0;
+	border: none;
+	width: 80%;
+	max-width: 800px;
+	height: 80%;
+	max-height: 450px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.video-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.75);
+	z-index: 8;
+}
+
+.video-modal-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: transparent;
+	border: none;
+	color: #fff;
+	font-size: 24px;
+	cursor: pointer;
+	z-index: 9;
+}
+
+.custom-modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background: #fff;
+	width: 600px;
+	max-width: 100%;
+	padding: 30px;
+	outline: none;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	z-index: 20;
+	transition: all 300ms ease-in-out;
+	&.ReactModal__Content--after-open {
+		opacity: 1;
+	}
+	&.ReactModal__Content--before-close {
+		opacity: 0;
+	}
+}
+
+.custom-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.75);
+	z-index: 10;
+	opacity: 0;
+	transition: opacity 300ms ease-in-out;
+	&.ReactModal__Overlay--after-open {
+		opacity: 1;
+	}
+	&.ReactModal__Overlay--before-close {
+		opacity: 0;
+	}
+}
+
+.custom-modal-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: transparent;
+	border: none;
+	font-size: 32px;
+	cursor: pointer;
+	z-index: 9;
+	opacity: .3;
+	transition-duration: .2s;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.modal-manager {
+	&-info {
+		margin-bottom: 30px;
+		font-size: $text-17;
+		padding-bottom: 20px;
+		border-bottom: $thin $grey-3;
+		&-title {
+			margin-right: 8px;
+			color: $theme-3;
+		}
+		&-name {
+			font-weight: $fw-medium;
+		}
+	}
+	&-row {
+		&:not(:last-child) {
+			margin-bottom: 25px;
+		}
+		&-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 15px;
+			.ch-icon,
+			.ch-title {
+				transition-duration: .2s;
+			}
+			.ch-icon {
+				width: 42px;
+				img {
+					display: block;
+				}
+			}
+			.ch-title {
+				font-size: $text-18;
+				color: $dark-1;
+				width: calc(100% - 57px);
+			}
+			&:hover {
+				.ch-icon {
+					opacity: .8;
+				}
+				.ch-title {
+					color: $theme-2;
+				}
+			}
+		}
+	}
+}

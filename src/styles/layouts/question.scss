@@ -1,0 +1,73 @@
+@use '../global' as *;
+
+.question {
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+	&:not(:last-child) {
+		border-bottom: 2px dashed $grey-3;
+	}
+	&-title {
+		position: relative;
+		padding-left: 50px;
+		margin-bottom: 30px;
+		span {
+			font-size: $text-22;
+		}
+		&-icon {
+			position: absolute;
+			left: 0;
+			top: -3px;
+			width: 36px;
+			height: 36px;
+			background-color: $theme-1;
+			border: $thin $grey-3;
+			border-radius: 3px;
+			& > svg {
+				fill: $grey-0;
+				@include abs-center;
+			}
+		}
+	}
+	&-item {
+		padding-left: 50px;
+	}
+	&-text {
+		h1 {
+			font-size: $text-26;
+		}
+		h2 {
+			font-size: $text-24;
+		}
+		h3 {
+			font-size: $text-20;
+		}
+		h4 {
+			font-size: $text-18;
+		}
+		h5 {
+			font-size: $text-16;
+		}
+		h6 {
+			font-size: $text-14;
+		}
+		blockquote {
+			margin: 20px 0;
+			padding: 15px 20px;
+			border-left: 4px solid $cyan-1;
+			background-color: $grey-1;
+			font-style: italic;
+			color: $dark-2;
+			border-radius: 4px;
+
+			p {
+				margin: 0;
+			}
+		}
+		img {
+			&:hover {
+				opacity: .6;
+				transition-duration: .3s;
+			}
+		}
+	}
+}

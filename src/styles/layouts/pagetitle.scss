@@ -1,0 +1,58 @@
+@use "../global" as *;
+
+.pagetitle {
+	background-color: $dark-1;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+	&:after {
+		content: "";
+		position: absolute;
+		background-color: rgba($dark-1, .75);
+		z-index: 0;
+		@include all-zero;
+	}
+	&-item {
+		color: $white;
+		text-wrap: pretty;
+		line-height: 1.5;
+		margin: 0;
+		position: relative;
+		z-index: 1;
+		font-size: $text-24;
+		text-align: center;
+		@include breakpoint(m) {
+			font-size: $text-28;
+		}
+		@include breakpoint(ml) {
+			text-align: left;
+		}
+		@include breakpoint(xl) {
+			font-size: $text-32;
+		}
+	}
+	&-deal {
+		margin-bottom: 15px;
+		z-index: 1;
+		position: relative;
+		color: $white;
+		font-weight: $fw-light;
+		span {
+			font-size: $text-20;
+			font-weight: $fw-regular;
+			padding-left: 5px;
+		}
+	}
+	&-logo {
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 15px;
+		@include breakpoint(ml) {
+			display: none;
+		}
+	}
+}

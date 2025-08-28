@@ -1,0 +1,139 @@
+@use '../global' as *;
+
+.day-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 30px 5px;
+	@include breakpoint(m) {
+		grid-template-columns: 0.8fr 1.2fr;
+	}
+}
+
+.day-item {
+	display: flex;
+	align-items: flex-start;
+	&-icon {
+		position: relative;
+		width: 44px;
+		height: 44px;
+		border-radius: 3px;
+		background-color: $grey-1;
+		& > svg {
+			width: 24px;
+			height: 24px;
+			fill: $theme-1;
+			@include abs-center;
+		}
+	}
+	&-info {
+		width: calc(100% - 44px);
+		padding-left: 18px;
+		&-title {
+			margin-bottom: 1px;
+			span {
+				color: $theme-3;
+				font-size: $text-14;
+				font-family: $font-title;
+			}
+		}
+		&-text {
+			display: flex;
+			flex-wrap: wrap;
+			span {
+				font-size: $text-15;
+				line-height: 1.6;
+				@include breakpoint(xxl) {
+					font-size: $text-17;
+				}
+				span {
+					white-space: nowrap;
+				}
+				&:not(:last-child) {
+					&:after {
+						content: '/';
+						margin: 0 8px;
+						color: $grey-4;
+						@include breakpoint(xxl) {
+							margin: 0 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.day-expand {
+	gap: 10px;
+	grid-template-rows: auto;
+	.block-dark {
+		display: none;
+	}
+	.block {
+		display: flex;
+		flex-direction: column;
+		transition-duration: .3s;
+		.detail-link {
+			margin-top: auto;
+		}
+	}
+	.intro-table {
+		border-top-width: 0;
+		color: $white;
+		&-row {
+			border-color: $dark-2;
+			&:hover {
+				background-color: $black;
+				color: inherit;
+			}
+			&-title {
+				span {
+					font-weight: $fw-light;
+				}
+			}
+			&-value {
+				span {
+					font-weight: $fw-regular;
+				}
+			}
+		}
+	}
+	&.active {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 10px;
+		@include breakpoint(xl) {
+			gap: 0;
+			grid-template-columns: 55% 45%;
+		}
+		.block-dark {
+			display: block;
+		}
+		.day-grid {
+			display: block;
+			.day-item {
+				&:not(:last-child) {
+					margin-bottom: 25px;
+				}
+			}
+		}
+		.detail-link {
+			justify-content: flex-end;
+			.btn-link {
+				flex-direction: row-reverse;
+				span {
+					font-size: 0;
+					color: transparent;
+					&:after {
+						content: attr(data-close);
+						font-size: $text-16;
+						color: $theme-2;
+					}
+				}
+				svg {
+					transform: rotate(180deg);
+				}
+			}
+		}
+	}
+}

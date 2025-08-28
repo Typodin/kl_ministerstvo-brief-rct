@@ -1,0 +1,137 @@
+@use "variables" as *;
+@use "colors" as *;
+@use "sass:map";
+
+@mixin breakpoint($breakpoint) {
+	@if map.has-key($breakpoints, $breakpoint) {
+		@media (min-width: map.get($breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+}
+
+@mixin breakpoint-max($breakpoint) {
+	@if map.has-key($breakpoints-max, $breakpoint) {
+		@media (max-width: map.get($breakpoints-max, $breakpoint)) {
+			@content;
+		}
+	}
+}
+
+@mixin abs-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin all-zero($top: 0, $right: 0, $bottom: 0, $left: 0) {
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+@mixin txt-break {
+	overflow-wrap: break-word;
+	hyphens: auto;
+	word-break: break-word;
+	text-wrap: balance;
+}
+
+@mixin txt-ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+@mixin inlineBreak {
+	content: "\A";
+	white-space: pre;
+}
+
+@mixin bg-image-set($webp-path, $fallback-path) {
+	background-image: image-set(
+		url($webp-path) type("image/webp"),
+		url($fallback-path) type("image/png")
+	);
+}
+
+@mixin scroll {
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+	&::-webkit-scrollbar-track {
+		background: $grey-1;
+		border-radius: 3px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: $grey-4;
+		border-radius: 3px;
+		&:hover {
+			background: $grey-5;
+		}
+	}
+	//- firefox
+	scrollbar-width: thin;
+	scrollbar-color: $grey-4 $grey-0;
+}
+
+//- side panel
+$transition-duration: 0.3s;
+$transform-origin-left: 0 0;
+$transform-origin-right: 100% 0;
+
+@mixin sidePanelBase {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 999;
+	transform-style: preserve-3d;
+	transition: transform $transition-duration, opacity $transition-duration;
+	@include breakpoint(m) {
+		width: clamp(500px, 35vw, 800px);
+	}
+}
+
+@mixin sidePanelLeftBase {
+	left: 0;
+	transform-origin: $transform-origin-left;
+	@include sidePanelBase;
+}
+
+@mixin sidePanelRightBase {
+	right: 0;
+	transform-origin: $transform-origin-right;
+	@include sidePanelBase;
+}
+
+@mixin sidePanelLeftOpen {
+	opacity: 1;
+	visibility: visible;
+	transform: rotateY(0deg);
+	@include sidePanelLeftBase;
+}
+
+@mixin sidePanelRightOpen {
+	opacity: 1;
+	visibility: visible;
+	transform: rotateY(0deg);
+	@include sidePanelRightBase;
+}
+
+@mixin sidePanelLeftHide {
+	opacity: 0;
+	visibility: hidden;
+	transform: rotateY(-75deg);
+	@include sidePanelLeftBase;
+}
+
+@mixin sidePanelRightHide {
+	opacity: 0;
+	visibility: hidden;
+	transform: rotateY(-75deg);
+	@include sidePanelRightBase;
+}
+

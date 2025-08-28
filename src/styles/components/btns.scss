@@ -1,0 +1,139 @@
+@use "../global" as *;
+
+button {
+	border: none;
+	background-color: transparent;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	line-height: 1;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	text-decoration: none;
+	max-width: 100%;
+	transition: all 0.2s ease;
+	span {
+		font-family: $font-text;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+	&:disabled {
+		pointer-events: none;
+		opacity: 0.5;
+	}
+	&-medium {
+		height: 48px;
+		padding: 0 25px;
+		border-radius: 3px;
+		span {
+			font-size: $text-15;
+		}
+	}
+	&-big {
+		height: 56px;
+		padding: 0 35px;
+		border-radius: 3px;
+		span {
+			font-size: $text-15;
+		}
+	}
+	&-theme {
+		background-color: $theme-1;
+		color: $white;
+		&:hover {
+			background-color: $theme-2;
+		}
+	}
+	&-dark {
+		background-color: $theme-3;
+		color: $white;
+		&:hover {
+			background-color: $theme-4;
+		}
+	}
+	&-light {
+		background-color: $grey-1;
+		border: $thin $grey-1;
+		color: $dark-1;
+		&:hover {
+			border-color: $theme-0;
+			background-color: $white;
+			color: $theme-2;
+		}
+	}
+}
+
+.detail-link {
+	padding: 20px;
+	border-top: $thin $grey-3;
+	display: flex;
+}
+
+.link-icon {
+	display: inline-flex;
+	align-items: center;
+	gap: 15px;
+	&-img {
+		width: 42px;
+		height: 42px;
+		background-color: $theme-1;
+		border-radius: 21px;
+		position: relative;
+		transition-duration: .3s;
+		& > svg {
+			width: 22px;
+			height: 22px;
+			@include abs-center;
+		}
+	}
+	span {
+		color: $dark-1;
+		width: calc(100% - 57px);
+		border-bottom: $dashed $dark-2;
+		transition-duration: .3s;
+	}
+	&:hover {
+		.link-icon-img {
+			background-color: $red-1;
+		}
+		span {
+			color: $theme-2;
+			border-bottom-color: transparent;
+		}
+	}
+}
+
+.btn-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 5px;
+	@include breakpoint(s) {
+		padding: 0;
+	}
+	span {
+		color: $theme-2;
+		border-bottom: $dashed $theme-1;
+		transition-duration: .2s;
+	}
+	svg {
+		display: block;
+		width: 20px;
+		height: 20px;
+	}
+	&:hover {
+		span {
+			border-bottom-color: transparent;
+		}
+	}
+}
+

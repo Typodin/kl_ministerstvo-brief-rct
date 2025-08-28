@@ -1,0 +1,134 @@
+@use "../global" as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-title;
+	margin: 0 0 0.8em;
+}
+
+h1 {
+	font-size: clamp($text-22, calc(7vw + 1rem), $text-36);
+	font-weight: $fw-regular;
+}
+
+h2 {
+	font-size: clamp($text-20, 1rem + 3vw, $text-32);
+	font-weight: $fw-regular;
+}
+
+h3 {
+	font-size: clamp($text-18, 1rem + 3vw, $text-20);
+	font-weight: $fw-medium;
+}
+
+h4 {
+	font-size: clamp($text-14, 1rem + 3vw, $text-15);
+	font-weight: $fw-medium;
+}
+
+h5 {
+	font-size: clamp($text-16, 1rem + 4vw, $text-20);
+	font-weight: $fw-medium;
+}
+
+h6 {
+	font-size: clamp($text-15, 1rem + 4vw, $text-18);
+	font-weight: $fw-medium;
+}
+
+b,
+strong {
+	font-weight: $fw-semi;
+}
+
+p {
+	margin-top: 0;
+}
+
+a {
+	transition-duration: 0.2s;
+	text-decoration: none;
+	&:active,
+	&:hover {
+		outline-width: 0;
+		text-decoration: none !important;
+	}
+}
+
+ol,
+ul,
+dl {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.block-title {
+	margin-bottom: 25px;
+	font-weight: $fw-medium;
+	font-size: $text-18;
+	@include breakpoint(s) {
+		font-size: $text-20;
+	}
+}
+
+.title-block {
+	&:before {
+		content: "";
+		display: block;
+		background: transparent url("../images/decor/decor-title-left.svg") left top no-repeat;
+		background-size: contain;
+	}
+	span {
+		font-family: $font-title;
+		font-weight: $fw-medium;
+	}
+	&-medium {
+		margin-bottom: 20px;
+		@include breakpoint(m) {
+			margin-bottom: 30px;
+		}
+		&:before {
+			width: 48px;
+			height: 12px;
+		}
+		span {
+			font-size: $text-22;
+			@include breakpoint(m) {
+				font-size: $text-26;
+			}
+		}
+	}
+	&-big {
+		margin: 0 0 20px 10px;
+		@include breakpoint(s) {
+			margin: 0 0 25px 0;
+		}
+		@include breakpoint(xl) {
+			margin: 0 0 35px 0;
+		}
+		&:before {
+			width: 56px;
+			height: 14px;
+		}
+		span {
+			font-size: $text-22;
+			font-weight: $fw-medium;
+			text-wrap: pretty;
+			@include breakpoint(m) {
+				font-size: $text-26;
+			}
+			@include breakpoint(xl) {
+				font-size: $text-30;
+			}
+		}
+	}
+}

@@ -1,0 +1,98 @@
+@use "../global" as *;
+
+.footer {
+	padding: 60px 30px;
+	background: $dark-1 url("../images/backgrounds/footer-bg.webp") center no-repeat;
+	background-size: cover;
+	position: relative;
+	@include breakpoint(xxl) {
+		padding: 60px 0;
+	}
+	&:after {
+		content: "";
+		background-color: rgba($dark-1, .5);
+		position: absolute;
+		@include all-zero;
+	}
+	&-wrap {
+		@include breakpoint(m) {
+			display: flex;
+			justify-content: space-between;
+			gap: 0 30px;
+		}
+	}
+	&-col {
+		position: relative;
+		z-index: 3;
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
+		@include breakpoint(m) {
+			margin-bottom: 0 !important;
+		}
+		&-title {
+			margin-bottom: 20px;
+			svg {
+				width: 28px;
+				height: 28px;
+			}
+			span {
+				display: block;
+				margin-top: 5px;
+				color: $theme-1;
+				font-weight: $fw-light;
+				font-size: $text-17;
+				font-family: $font-title;
+			}
+		}
+		&-contacts {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			gap: 20px;
+			margin-bottom: 20px;
+			@include breakpoint(m) {
+				flex-direction: column;
+			}
+			& > span,
+			& > a {
+				font-weight: $fw-light;
+				color: $white;
+				span {
+					border-bottom-width: .5px;
+					border-bottom-style: dashed;
+					border-bottom-color: $white;
+					&:hover {
+						border-bottom-width: 0;
+					}
+				}
+			}
+			& > a:hover {
+				color: $theme-0;
+			}
+		}
+		&-icons {
+			display: flex;
+			gap: 10px;
+			margin-bottom: 20px;
+			img {
+				width: 26px;
+				height: 26px;
+				display: block;
+			}
+		}
+		&-yad {
+			margin-top: 10px;
+			display: inline-block;
+			img {
+				display: block;
+				width: 70px;
+			}
+			&:hover {
+				img {
+					opacity: .8;
+				}
+			}
+		}
+	}
+}

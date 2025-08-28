@@ -1,0 +1,62 @@
+@use "../global" as *;
+
+.mobile-header {
+	padding: 15px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 20;
+	background-color: $white;
+	box-shadow: $shadow-1;
+	@include breakpoint(ml) {
+		display: none;
+	}
+	& + section {
+		@include breakpoint-max(ml) {
+			margin-top: 74px;
+		}
+	}
+	&-wrap {
+		display: flex;
+		justify-content: space-between;
+	}
+	&-menu {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		button {
+			padding: 6px;
+			border-radius: 3px;
+			width: 44px;
+			height: 44px;
+		}
+		span {
+			display: none;
+			@include breakpoint(t) {
+				display: inline-block;
+			}
+		}
+	}
+	&-btns {
+		display: flex;
+		gap: 20px;
+		.btn {
+			width: 44px;
+			height: 44px;
+			border-radius: 3px;
+			&:not(.btn-theme) {
+				background-color: $grey-1;
+				border: $thin $grey-4
+			}
+			&.btn-theme {
+				img {
+					width: 24px;
+					height: 24px;
+					filter: brightness(0) invert(1);
+					@include abs-center;
+				}
+			}
+		}
+	}
+}

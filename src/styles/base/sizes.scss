@@ -1,0 +1,68 @@
+@use "../global" as *;
+
+.pad-10 {
+	padding: 10px;
+}
+
+.pad-20 {
+	padding: 10px;
+	@include breakpoint(s) {
+		padding: 20px;
+	}
+}
+
+.pad-30 {
+	padding: 20px;
+	@include breakpoint(m) {
+		padding: 30px;
+	}
+}
+
+.pad-40 {
+	padding: 20px;
+	@include breakpoint(m) {
+		padding: 30px;
+	}
+	@include breakpoint(xxl) {
+		padding: 40px;
+	}
+}
+
+.ptb-70 {
+	padding: 50px 0;
+	@include breakpoint(xl) {
+		padding: 70px 0;
+	}
+}
+
+.pb-70 {
+	padding-bottom: 40px;
+	@include breakpoint(m) {
+		padding-bottom: 50px;
+	}
+	@include breakpoint(xl) {
+		padding-bottom: 70px;
+	}
+}
+
+.mb-70 {
+	margin-bottom: 40px;
+	@include breakpoint(m) {
+		margin-bottom: 50px;
+	}
+	@include breakpoint(xl) {
+		margin-bottom: 70px;
+	}
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.mt-30 {
+	margin-top: 30px;
+}

@@ -1,0 +1,39 @@
+@use '../global' as *;
+
+.contents {
+  color: $dark-2;
+  p {
+    font-size: inherit;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include txt-break;
+  }
+  ul,
+  ol {
+    margin: 20px 0;
+    padding-left: 25px;
+    li {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  ul {
+    list-style: square;
+    li::marker {
+      color: $theme-1;
+    }
+  }
+  ol {
+    list-style: decimal;
+  }
+}
+

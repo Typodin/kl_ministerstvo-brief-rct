@@ -1,0 +1,46 @@
+@use "../global" as *;
+
+.label {
+	display: block;
+	line-height: 1;
+	font-size: $text-12;
+	border: $thin;
+	border-radius: 2px;
+	padding: 6px 8px;
+	&-orange {
+		border-color: $theme-1;
+		background-color: rgba($theme-1, .1);
+		color: $theme-2;
+	}
+	&-blue {
+		border-color: $cyan-1;
+		background-color: rgba($cyan-1, .1);
+		color: $cyan-2;
+	}
+	&-green {
+		border-color: $green-1;
+		background-color: rgba($green-1, .1);
+		color: $green-2;
+	}
+	&-grey {
+		border-color: $grey-5;
+		background-color: rgba($grey-5, .1);
+		color: $theme-3;
+	}
+}
+
+.label-ico,
+.label-img {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	background-color: $grey-1;
+	border-radius: 2px;
+	svg {
+		width: 18px;
+		height: 18px;
+	}
+}
+

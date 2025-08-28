@@ -1,0 +1,201 @@
+@use "../global" as *;
+
+.sidebar {
+	height: 100vh;
+	overflow-y: auto;
+	background-color: $white;
+	box-shadow: $shadow-3;
+	display: flex;
+	@include breakpoint-max(ml) {
+		@include sidePanelLeftHide;
+		&.active {
+			z-index: 999;
+			position: relative;
+			@include sidePanelLeftOpen;
+		}
+	}
+	@include breakpoint(ml) {
+		justify-content: flex-end;
+		min-width: 330px;
+		position: sticky;
+		top: 0;
+	}
+	&-container {
+		padding: 35px 25px;
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
+		min-height: 100%;
+		overflow-y: auto;
+		@include scroll;
+		@include breakpoint(ml) {
+			width: 330px;
+		}
+	}
+	&-close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		button {
+			width: 32px;
+			height: 32px;
+			background-color: $grey-1;
+			position: relative;
+			img {
+				opacity: .6;
+				width: 24px;
+				height: 24px;
+				@include abs-center;
+			}
+		}
+		@include breakpoint(ml) {
+			display: none;
+		}
+	}
+	&-btn {
+		@include breakpoint-max(ml) {
+			display: none;
+		}
+	}
+}
+
+.sidebar-logo {
+	line-height: 1;
+	img {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+
+.sidebar-menu {
+	padding-left: 40px;
+	&-item {
+		& > li {
+			margin-bottom: 20px;
+			position: relative;
+			&.parent {
+				&.active > a {
+					color: $theme-2;
+				}
+			}
+			& > a {
+				font-family: $font-title;
+				color: $dark-1;
+				font-size: $text-16;
+				font-weight: $fw-medium;
+				span {
+					&:nth-child(2) {
+						margin-top: 2px;
+						display: block;
+						font-size: $text-14;
+						color: $theme-3;
+						font-weight: $fw-regular;
+					}
+				}
+				&.active,
+				&:hover {
+					color: $theme-2;
+				}
+			}
+		}
+	}
+	&-sub {
+		margin: 15px 0 25px;
+		display: none;
+		& > li {
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
+			a {
+				color: $black;
+				display: block;
+				position: relative;
+				padding-left: 20px;
+				font-size: $text-15;
+				&:before {
+					content: "";
+					position: absolute;
+					top: 10px;
+					left: 0;
+					height: 1px;
+					width: 12px;
+					background-color: $theme-3;
+				}
+				&.active,
+				&:hover {
+					color: $theme-2;
+					&:before {
+						background-color: $theme-2;
+					}
+				}
+			}
+		}
+	}
+	&-downloads {
+		margin-top: 25px;
+		padding-top: 25px;
+		border-top: $dotted $grey-4;
+		&-list {
+			li {
+				margin-bottom: 20px;
+				a {
+					color: $dark-1;
+					position: relative;
+					font-family: $font-title;
+					svg {
+						position: absolute;
+						left: -35px;
+						top: 0;
+						width: 22px;
+						height: 18px;
+						&[data-icon="print"] {
+							width: 24px;
+							height: 20px;
+						}
+					}
+					span {
+						font-size: $text-15;
+						border-bottom: $dashed $grey-5;
+					}
+					&:hover {
+						color: $theme-2;
+						span {
+							border-bottom-color: transparent;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.sidebar-menu-item li.parent {
+	&:has(.sidebar-menu-sub) {
+		.open-sub {
+			width: 20px;
+			height: 20px;
+			background: transparent url("../images/ico/plus-square.svg") center no-repeat;
+			background-size: contain;
+			position: absolute;
+			top: 1px;
+			left: -30px;
+			&.opened {
+				background-image: url("../images/ico/minus-square-grey.svg");
+			}
+		}
+		&.active > .open-sub {
+			background-image: url("../images/ico/minus-square.svg");
+		}
+	}
+	&:not(:has(.sidebar-menu-sub)) {
+		.open-sub {
+			display: none;
+		}
+	}
+}
+
+.sidebar-menu-sub.open {
+	display: block;
+}

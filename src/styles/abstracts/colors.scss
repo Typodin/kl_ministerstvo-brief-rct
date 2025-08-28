@@ -1,0 +1,38 @@
+@use 'sass:color';
+
+$black: #000000;
+$white: #ffffff;
+
+/* color */
+$red-1: #ff0f00;
+$red-2: #ce1307;
+
+$cyan-1: #1289a7;
+$cyan-2: #0d687e;
+
+$green-1: #009432;
+$green-2: #006722;
+
+$dark-1: #091922;
+$dark-2: #485059;
+
+$grey-0: #f9f9f9;
+$grey-1: #f3f8fa;
+$grey-2: #e8edf1;
+$grey-3: #e3ecf1;
+$grey-4: #b5c6cf;
+$grey-5: #7d96a4;
+$grey-6: #8E8E8E;
+
+$theme-0: #f49c83;
+$theme-1: #e76642;
+$theme-2: #c04621;
+$theme-3: #50667e;
+$theme-4: #3f5267;
+
+$shadow-0: 0 0 20px 2px rgba($black,.10);
+$shadow-1: 0 0 60px 2px rgba($black,.15);
+$shadow-2: 0 0 4px 2px rgba($grey-6,.05);
+$shadow-3: 0 4px 16px 0 rgba($black,.05);
+$shadow-4: 0 0 4px 0 rgba($grey-5,.05);
+$shadow-5: 0 0 24px 6px rgba($black,.05);
