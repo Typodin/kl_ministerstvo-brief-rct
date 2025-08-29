@@ -12,7 +12,7 @@ const Pagetitle = ({title, dealId}) => {
 					<div className="pagetitle-logo">
 						<img src="/images/site/logo-mobile.svg" alt="Ministerstvo Catering Company"/>
 					</div>
-					<div className="pagetitle-deal">Сделка: <span>{dealId}</span></div>
+					<div className="pagetitle-deal">Бриф по сделке: <span>{dealId}</span></div>
 					<h1 className="pagetitle-item">{title}</h1>
 				</div>
 			</div>

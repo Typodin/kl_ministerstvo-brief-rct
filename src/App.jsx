@@ -7,6 +7,8 @@ import MobileHeader from './components/Main/MobileHeader.jsx';
 import Pagetitle from './components/Main/Pagetitle.jsx';
 import Days from './components/Main/Days.jsx';
 
+import 'yet-another-react-lightbox/styles.css';
+
 export default function App() {
 	const [eventData, setEventData] = useState(null);
 	const [error, setError] = useState(null);

@@ -1,7 +1,10 @@
+import { useState, useCallback } from 'react';
+import Lightbox from 'yet-another-react-lightbox';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import SectionWrapper from '../ui/SectionWrapper';
 import DayItem from '../ui/DayItem';
-import Gallery from './Gallery.jsx';
 import useFormatPhone from '../../hooks/useFormatPhone.js';
+import useTelLink from '../../hooks/useTelLink.js';
 import {
 	CalendarDotsIcon,
 	MapPinIcon,
@@ -14,6 +17,27 @@ import {
 
 const DaySummary = ({data, dataItems}) => {
 	const formatPhone = useFormatPhone();
+	const formatTelLink = useTelLink();
+
+	const [lightboxOpen, setLightboxOpen] = useState(false);
+	const [lightboxIndex, setLightboxIndex] = useState(0);
+	const [lightboxSlides, setLightboxSlides] = useState([]);
+
+	const openLightbox = useCallback((imgs, startIndex = 0) => {
+		const slides = (Array.isArray(imgs) ? imgs : [])
+			.map((img) => {
+				const src = img?.detail || img?.preview;
+				if (!src) return null;
+				return { src, alt: 'Фото' };
+			})
+			.filter(Boolean);
+
+		if (!slides.length) return;
+		setLightboxSlides(slides);
+		setLightboxIndex(Math.min(startIndex, slides.length - 1));
+		setLightboxOpen(true);
+	}, []);
+
 	if (!data) return null;
 
 	const {
@@ -44,7 +68,7 @@ const DaySummary = ({data, dataItems}) => {
 			title: 'Тайминг',
 			value: [
 				checkIn && `Заезд: ${checkIn}`,
-				start && `Старт: ${start}`,
+				start && `Начало: ${start}`,
 				finish && `Окончание: ${finish}`
 			].filter(Boolean)
 		},
@@ -54,7 +78,11 @@ const DaySummary = ({data, dataItems}) => {
 			title: 'Клиент',
 			value: [
 				clientFio && clientFio,
-				clientPhone && formatPhone(clientPhone)
+				clientPhone && (
+					<a href={formatTelLink(clientPhone)}>
+						{formatPhone(clientPhone)}
+					</a>
+				)
 			].filter(Boolean)
 		},
 		{icon: MapPinIcon, title: 'Адрес мероприятия', value: address},
@@ -64,10 +92,14 @@ const DaySummary = ({data, dataItems}) => {
 			value: [
 				placeName && `${placeName}`,
 				placeFio && `${placeFio}`,
-				placePhone && formatPhone(placePhone)
+				placePhone && (
+					<a href={formatTelLink(placePhone)}>
+						{formatPhone(placePhone)}
+					</a>
+				)
 			].filter(Boolean)
 		}
-	].filter(Boolean);
+	];
 
 	return (
 		<SectionWrapper className={'pb-70'}>
@@ -122,18 +154,28 @@ const DaySummary = ({data, dataItems}) => {
 											{hasImages && (
 												<>
 													<h4 className="block-title mt-20">Фото</h4>
-													<Gallery
-														data={{
-															items: [
-																{
-																	id: `${sidebar_id || idx}-images`,
-																	name: 'Фото',
-																	images: images || [],
-																	videos: [] // временно для видео
-																}
-															]
-														}}
-													/>
+													<div className="question-images">
+														{images.map((img, i) => {
+															const preview = img?.preview || img?.detail;
+															const detail = img?.detail || img?.preview;
+															if (!preview) return null;
+
+															return (
+																<a
+																	key={i}
+																	href={detail || '#'}
+																	onClick={(e) => {
+																		e.preventDefault();
+																		openLightbox(images, i);
+																	}}
+																	className="day-thumb"
+																	aria-label={`Открыть изображение ${i + 1} в полноэкранном режиме`}
+																>
+																	<img src={preview} alt={`image-${i + 1}`} loading="lazy" />
+																</a>
+															);
+														})}
+													</div>
 												</>
 											)}
 
@@ -146,6 +188,15 @@ const DaySummary = ({data, dataItems}) => {
 					)}
 
 				</div>
+
+			<Lightbox
+				open={lightboxOpen}
+				close={() => setLightboxOpen(false)}
+				index={lightboxIndex}
+				slides={lightboxSlides}
+				plugins={[Zoom]}
+				zoom={{ scrollToZoom: true, maxZoomPixelRatio: 3 }}
+			/>
 
 
 		</SectionWrapper>

@@ -39,14 +39,21 @@
 		&-text {
 			display: flex;
 			flex-wrap: wrap;
-			span {
+			span,
+			a {
+				color: $dark-1;
 				font-size: $text-15;
 				line-height: 1.6;
 				@include breakpoint(xxl) {
 					font-size: $text-17;
 				}
 				span {
-					white-space: nowrap;
+					@include breakpoint(l) {
+						white-space: nowrap;
+					}
+				}
+				a:hover {
+					color: $theme-2;
 				}
 				&:not(:last-child) {
 					&:after {

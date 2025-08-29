@@ -37,11 +37,15 @@
 		z-index: 1;
 		position: relative;
 		color: $white;
+		text-align: center;
 		font-weight: $fw-light;
 		span {
 			font-size: $text-20;
-			font-weight: $fw-regular;
+			font-weight: $fw-medium;
 			padding-left: 5px;
+		}
+		@include breakpoint(ml) {
+			text-align: left;
 		}
 	}
 	&-logo {
